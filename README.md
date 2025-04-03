@@ -1,1 +1,1 @@
-# Shopping cart - TheOdinProject
+# Project
