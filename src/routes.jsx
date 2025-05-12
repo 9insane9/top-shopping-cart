@@ -23,7 +23,7 @@ const routes = [
       },
       {
         path: "cart",
-        element: <Cart />,
+        element: <Cart variant="fullSize" />, //anything except "drawer"
       },
     ],
     errorElement: <ErrorPage />,

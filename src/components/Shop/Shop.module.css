@@ -1,0 +1,11 @@
+.shopContainer {
+  padding: 0.5rem;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  list-style: none;
+  gap: 1rem;
+  justify-items: center;
+}

@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-test: #2600ff;
 }
 
 * {
@@ -22,18 +24,7 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
-}
-
-nav {
-  display: flex;
-  border: 1px solid red;
-}
-
-nav ul {
-  list-style-type: none;
-  display: flex;
-  gap: 10px;
 }
