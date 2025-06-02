@@ -13,12 +13,6 @@
   flex-direction: column;
 }
 
-.processingContainer {
-}
-
-.successContainer {
-}
-
 .redirecting {
   font-style: italic;
 }

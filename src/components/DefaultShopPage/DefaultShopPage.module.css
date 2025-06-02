@@ -2,11 +2,6 @@
   width: 100%;
 }
 
-.filter {
-  /* filter: brightness(0.9); */
-  /* opacity: 0.5; */
-}
-
 .fakeItem {
   position: relative;
   max-width: 100%;
