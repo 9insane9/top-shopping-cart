@@ -1,9 +1,14 @@
-nav {
+.navBar {
   display: flex;
   flex-direction: row;
-  border: 1px solid red;
+  background-color: var(--nav-bg);
+  color: var(--primary-text);
   justify-content: space-between;
   padding: 0 0.5rem;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
 }
 
 .links {
@@ -14,13 +19,15 @@ nav {
 }
 
 .links li {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   padding: 0;
   font-size: 1.1rem;
+  display: flex;
 }
 
 .links li a {
-  display: block;
+  display: flex;
+  align-items: center;
   color: inherit;
   padding: 10px 20px;
   text-decoration: none;
@@ -28,20 +35,85 @@ nav {
   height: 100%;
 }
 
-.cartBtn {
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  /* border: 1px solid cyan; */
+}
+
+.btn {
   background: none;
   border: none;
-}
-
-.cartBtn:hover {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid greenyellow; */
+  height: 40px;
 }
 
-.cartBtn img {
+.cartBtn {
+  position: relative;
+}
+
+.tinyNumber {
+  background: var(--nav-bg);
+  position: absolute;
+  padding: 2px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  bottom: 0px;
+  right: 0px;
+  width: min-content;
+}
+
+.btn:hover {
+  background-color: var(--store-button-bg);
+}
+
+.search,
+.cart {
   height: 40px;
   width: auto;
+  fill: var(--secondary-text);
+}
+
+.searchContainer {
+  display: none;
+  /* display: flex; */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  border: 1px solid var(--secondary-text);
+}
+
+.searchContainer input {
+  width: 100%;
+  /* margin-left: 10px; */
+  outline: none;
+  border: none;
+  color: var(--primary-text);
+  background: var(--primary-bg);
 }
 
 .links li a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--store-button-bg);
 }
+
+@media screen and (min-width: 901px) {
+  .searchContainer {
+    display: flex;
+  }
+
+  .searchBtn {
+    display: none;
+  }
+
+  .btnContainer {
+    width: 300px;
+  }
+}
+
+/* .drawer {
+  background-color: var(--primary-bg);
+} */

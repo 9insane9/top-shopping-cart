@@ -1,0 +1,99 @@
+.embla {
+  position: relative;
+  width: 100%;
+
+  overflow: hidden;
+  /* border: 1px solid cyan; */
+  min-width: 0;
+}
+
+.embla__container {
+  display: flex;
+  min-width: 0;
+}
+
+.embla__slide {
+  flex: 0 0 28%;
+  min-width: 0;
+  /* border: 1px solid cyan; */
+  box-sizing: border-box;
+  padding: 0 5px; /* gap between slides */
+}
+
+.carouselInfo {
+  display: flex;
+  margin-bottom: 10px;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.carouselInfo button {
+  padding: 0px 20px;
+  font-size: 1.1rem;
+  color: var(--store-button-text);
+  background: var(--store-button-bg);
+  border: none;
+}
+
+.carouselWrapper {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 5px;
+}
+
+.controlsWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.controlsWrapper button {
+  border: none;
+}
+
+.arrow {
+  width: 30px;
+  /* fill: red; */
+  /* stroke: currentColor; */
+  /* stroke-width: 2px; */
+}
+
+@media screen and (max-width: 900px) {
+  .embla__slide {
+    flex: 0 0 70%;
+  }
+  .carouselWrapper {
+    padding: 20px 0;
+  }
+
+  .carouselInfo button {
+    padding: 0px 10px;
+    font-size: 1.1rem;
+  }
+  .controlsWrapper > button {
+    display: none;
+  }
+}
+
+/* colors */
+.carouselInfo button,
+.controlsWrapper button {
+  color: var(--store-button-text);
+  background: var(--store-button-bg);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.arrow {
+  fill: var(--store-button-text);
+  transition: fill 0.2s ease;
+}
+
+.carouselInfo button:hover,
+.controlsWrapper button:hover {
+  color: var(--primary-text);
+  background: var(--store-button-hover-bg);
+}
+
+.embla__next:hover .arrow,
+.embla__prev:hover .arrow {
+  fill: var(--primary-text);
+}

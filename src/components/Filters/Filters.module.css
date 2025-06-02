@@ -1,0 +1,160 @@
+.filtersContainer {
+  width: 100%;
+  min-width: 300px;
+  /* max-width: 300px; */
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-bg);
+}
+
+.searchContainer {
+  display: flex;
+  width: 100%;
+  /* border: 1px solid blueviolet; */
+}
+
+.searchInput {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: var(--primary-bg);
+}
+
+.searchBtn {
+  width: 40px;
+  height: auto;
+}
+
+.allGenresContainer {
+  /* border: 1px solid cyan; */
+  padding: 5px;
+  text-align: left;
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+  border: 3px solid var(--filter-label-bg);
+}
+
+.resetBtn,
+.searchContainer,
+.genre {
+  height: 40px;
+  /* border: 1px solid red; */
+}
+
+.resetBtn {
+  width: 100%;
+}
+
+.genre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0px;
+  color: var(--secondary-text);
+}
+
+.genre:hover {
+  background-color: aqua;
+}
+
+/* custom checkbox */
+
+.genresTitle {
+  margin-bottom: 5px;
+  padding-left: 10px;
+  font-size: 1.3rem;
+  background: var(--filter-label-bg);
+}
+
+.customCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  height: 40px;
+  padding: 10px;
+  width: 100%;
+}
+
+.customCheckbox input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid black;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.customCheckbox input:checked + .checkmark {
+  background-color: var(--primary-bg);
+}
+
+.customCheckbox input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--primary-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* conditional styling */
+
+.genre.selected {
+  background-color: var(--filter-label-bg);
+  color: var(--primary-text);
+}
+
+.genre:not(.selected):hover {
+  background-color: var(--tertiary-text);
+  color: #000;
+}
+
+.searchContainer button {
+  color: var(--store-button-text);
+  background-color: var(--store-button-bg);
+  border: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.searchContainer button svg {
+  fill: var(--store-button-text);
+  transition: fill 0.2s ease;
+}
+
+.searchContainer button:hover {
+  color: var(--primary-text);
+  background-color: var(--store-button-hover-bg);
+}
+
+.searchContainer button:hover svg {
+  fill: var(--primary-text);
+}
+
+.resetBtn {
+  color: var(--store-button-text);
+  background-color: var(--store-button-bg);
+  border: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.resetBtn:hover {
+  color: var(--primary-text);
+  background-color: var(--store-button-hover-bg);
+}

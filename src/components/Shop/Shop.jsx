@@ -1,29 +1,32 @@
-import { ToastContainer, toast } from "react-toastify"
-import ShopItem from "../ShopItem/ShopItem"
-import classes from "./Shop.module.css"
+import { toast } from "react-toastify"
 import { useCart } from "../context/CartProvider"
 import { useProducts } from "../context/ProductProvider"
+import { useFilters } from "../context/FilterProvider"
+import DefaultShopPage from "../DefaultShopPage/DefaultShopPage"
+import QueryResults from "../QueryResults/QueryResults"
+import classes from "./Shop.module.css"
 
 export default function Shop() {
   const { addToCart } = useCart()
-  const { products, loading, error } = useProducts()
+  const { productCache, error } = useProducts()
+  // const { loading } = useProducts()
+  const { searchTerm, hasSelectedGenres, isQuery } = useFilters()
 
   function handleAddToCart(id) {
+    const item = productCache[id]
     addToCart(id)
-    const item = products.find((i) => i.id === id)
     toast(`${item.name} added to cart!`)
   }
 
-  if (loading) return <div>Loading products...</div>
   if (error) return <p>Failed to load products. Try again later.</p>
 
   return (
     <div className={classes.shopContainer}>
-      <ul className={classes.productList}>
-        {products.map((item) => (
-          <ShopItem key={item.id} {...item} onAdd={handleAddToCart} />
-        ))}
-      </ul>
+      {isQuery ? (
+        <QueryResults handleAddToCart={handleAddToCart} />
+      ) : (
+        <DefaultShopPage handleAddToCart={handleAddToCart} />
+      )}
     </div>
   )
 }

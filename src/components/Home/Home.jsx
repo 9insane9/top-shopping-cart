@@ -1,9 +1,23 @@
 import classes from "./Home.module.css"
+import { useNavigate } from "react-router-dom"
+import { useFilters } from "../context/FilterProvider"
 
 export default function Home() {
+  const navigate = useNavigate()
+  const { resetFilters, setIsQuery } = useFilters()
+
+  const resetAndNavigate = () => {
+    resetFilters()
+    setIsQuery(false)
+    navigate("/shop")
+  }
+
   return (
-    <>
-      <h1>Home!</h1>
-    </>
+    <div className={classes.container}>
+      <h1 className={classes.titleText}>
+        welcome to the greatest video game store of all time
+      </h1>
+      <button onClick={resetAndNavigate}>Shop now!</button>
+    </div>
   )
 }

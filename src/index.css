@@ -1,18 +1,38 @@
 :root {
+  /* Background Colors */
+  --primary-bg: #1e1f26; /* Deep charcoal */
+  --nav-bg: #2c2e3a; /* Slightly lighter charcoal */
+  --nav-hover-bg: #9baaff; /* Slightly lighter charcoal */
+  --item-bg: #424b69; /* Dark slate-blue for item cards */
+
+  --filter-label-bg: #3a506b; /* Muted steel blue */
+  --genre-selected-bg: #1b9aaa; /* Bright cyan-teal */
+
+  --remove-btn-bg: #cf0f47; /* Crimson red */
+  --add-to-cart-btn-bg: #3fc1c9; /* Fresh turquoise */
+
+  /* Text Colors */
+  --primary-text: #ffffff; /* Pure white */
+  --secondary-text: #e0e0e0; /* Light gray */
+  --tertiary-text: #a0a0a0; /* Medium gray */
+
+  --store-button-bg: #424b69; /* Coral red */
+  --store-button-hover-bg: #9baaff; /* Coral red */
+  --store-button-text: #b8bffa; /* Matches primary-bg for contrast */
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: var(--primary-bg); */
+  background-color: #000000; /* outside app area */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --color-test: #2600ff;
 }
 
 * {
@@ -24,7 +44,37 @@
 body {
   margin: 0;
   display: flex;
-  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+input[type="search"] {
+  padding: 0 5px;
+  background-color: var(--primary-bg);
+}
+
+input::placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 1;
+  transition: color 0.2s ease;
+}
+
+input:focus::placeholder {
+  color: #ccc;
+}
+
+/* toast stuff */
+
+.Toastify__toast {
+  background-color: var(--primary-bg);
+  color: var(--store-button-text);
+  font-size: 1rem;
+  border: 1px solid var(--item-bg);
+  border-radius: 8px;
 }

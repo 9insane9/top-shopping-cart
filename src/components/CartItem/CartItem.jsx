@@ -1,4 +1,5 @@
 import { useProducts } from "../context/ProductProvider"
+import icons from "../../utils/icons"
 import classes from "./CartItem.module.css"
 
 export default function CartItem({
@@ -8,9 +9,10 @@ export default function CartItem({
   onUpdate,
   variant = "drawer",
 }) {
-  const { products } = useProducts()
-  const product = products.find((i) => i.id === id)
+  const { productCache } = useProducts()
+  const product = productCache[id]
   const subTotal = product.price * qty
+
   const drawerItem = (
     <div className={classes.item}>
       <div className={classes.imgWrapper}>
@@ -19,21 +21,15 @@ export default function CartItem({
       </div>
       <div className={classes.infoContainer}>
         <h2>{product.name}</h2>
-        <h3>{product.price} €</h3>
+        <h3>{product.price.toFixed(2)} €</h3>
       </div>
-      {/* <input
-        type="number"
-        value={qty}
-        min={1}
-        onChange={(e) => onUpdate(id, Number(e.target.value))}
-      /> */}
       <button
         className={classes.removeBtn}
         onClick={() => {
           onRemove(id)
         }}
       >
-        <img src="/trash.svg" alt="" />
+        {icons.trash({ className: `${classes.remove}` })}
       </button>
     </div>
   )
@@ -42,35 +38,41 @@ export default function CartItem({
     <div className={`${classes.item} ${classes.itemFullSize}`}>
       <div className={`${classes.imgWrapper} ${classes.imgWrapperFullSize}`}>
         <img src={product.imgSrc} alt={product.name} />
-        {/* <p className={classes.miniQty}>{qty}</p> */}
       </div>
       <div
         className={`${classes.infoContainer} ${classes.infoContainerFullSize}`}
       >
-        <span className={`${classes.productNameFullSize}`}>{product.name}</span>
-        <span className={`${classes.productPriceFullSize}`}>
-          {product.price} €
-        </span>
+        <div className={classes.namePriceWrapper}>
+          <span className={`${classes.productNameFullSize}`}>
+            {product.name}
+          </span>
+          <span className={`${classes.productPriceFullSize}`}>
+            {product.price.toFixed(2)} €
+          </span>
+        </div>
+
+        <div className={classes.priceQtyControl}>
+          <p className={classes.times}>x</p>
+          <div className={classes.customQtyControl}>
+            <button onClick={() => onUpdate(id, qty - 1)}>-</button>
+            <input
+              type="text"
+              value={qty}
+              min={1}
+              onChange={(e) => onUpdate(id, e.target.value)}
+            />
+            <button onClick={() => onUpdate(id, qty + 1)}>+</button>
+          </div>
+          <p className={classes.subTotal}>{subTotal.toFixed(2)}&nbsp;€</p>
+        </div>
       </div>
-      <p className={classes.times}>x</p>
-      <div className={classes.customQtyControl}>
-        <button onClick={() => onUpdate(id, qty - 1)}>-</button>
-        <input
-          type="text"
-          value={qty}
-          min={1}
-          onChange={(e) => onUpdate(id, e.target.value)}
-        />
-        <button onClick={() => onUpdate(id, qty + 1)}>+</button>
-      </div>
-      <p className={classes.subTotal}>{subTotal} €</p>
       <button
         className={`${classes.removeBtn} ${classes.removeBtnFullSize}`}
         onClick={() => {
           onRemove(id)
         }}
       >
-        <img src="/trash.svg" alt="remove from cart" />
+        {icons.trash({ className: `${classes.remove}` })}
       </button>
     </div>
   )

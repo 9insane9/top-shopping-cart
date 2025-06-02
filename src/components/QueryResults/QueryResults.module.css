@@ -1,0 +1,216 @@
+.queryResults {
+  display: flex;
+  flex-direction: row-reverse; /* left-right reversed, big prank heheh */
+  min-width: 100%;
+}
+
+.topMenu,
+.left {
+  position: relative;
+  /* top: 70px; */
+  z-index: 25;
+}
+
+.topMenu {
+  /* border: 1px solid cyan; */
+  /* min-width: 100%; */
+  margin-bottom: 10px;
+}
+
+.searchMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--filter-label-bg);
+  /* margin-bottom: 10px; */
+}
+
+.searchMenu button {
+  height: 30px;
+  width: 30px;
+}
+
+.gridIcon,
+.listIcon {
+}
+
+.searchBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+}
+
+.viewBtnsContainer button {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.listIcon {
+  transform: scale(1.2);
+}
+
+.searchContainer {
+  display: flex;
+  /* border: 1px solid plum; */
+  /* height: 60px; */
+  padding: 10px;
+  max-width: 100%;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* .searchContainer * {
+  height: 100%;
+} */
+
+.searchContainer input {
+  height: 30px;
+  border: none;
+  /* border: 1px solid red; */
+  outline: none;
+  color: var(--primary-text);
+  /* background-color: var(--primary-bg); */
+  background-color: var(--primary-bg);
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.left {
+  display: none;
+  align-self: flex-start;
+  width: 300px;
+  margin-left: 10px;
+}
+
+.right {
+  width: 100%;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  list-style: none;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.criteriaContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid white; */
+  gap: 5px;
+  padding: 5px;
+  background: var(--primary-bg);
+}
+
+.criteria {
+  /* border: 1px solid cadetblue; */
+  padding: 5px 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--nav-bg);
+  border: 1px dotted var(--tertiary-text);
+}
+
+.criteria button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border: 1px dotted transparent;
+  border-radius: 10px;
+}
+
+.removeCriteria {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 901px) {
+  .left {
+    display: block;
+  }
+
+  .topMenu,
+  .left {
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+  }
+}
+
+.loadSpinner {
+  width: 100%;
+  /* min-height: 200px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.loadSpinner {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadSpinner * {
+  color: red;
+}
+
+@media screen and (min-width: 901px) {
+  .queryResults {
+    padding: 0 10px;
+  }
+}
+
+/* color */
+
+/* .searchMenu button {
+  border: none;
+  background-color: var(--store-button-bg);
+}
+
+.searchMenu button svg {
+  fill: var(--store-button-text);
+} */
+
+.searchMenu button {
+  border: none;
+  background-color: var(--store-button-bg);
+  cursor: pointer;
+  /* padding: 0.5rem; */
+  transition: background-color 0.2s ease;
+}
+
+.searchMenu button svg {
+  fill: var(--store-button-text);
+  transition: fill 0.2s ease;
+}
+
+.searchMenu button .trash {
+  fill: var(--remove-btn-bg);
+  transition: fill 0.2s ease;
+}
+
+.searchMenu button:hover {
+  background-color: var(--store-button-hover-bg);
+}
+
+.searchMenu button:hover svg {
+  fill: var(--primary-text);
+}

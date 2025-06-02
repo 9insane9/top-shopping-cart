@@ -1,0 +1,25 @@
+.defaultView {
+  width: 100%;
+}
+
+.filter {
+  /* filter: brightness(0.9); */
+  /* opacity: 0.5; */
+}
+
+.fakeItem {
+  position: relative;
+  max-width: 100%;
+  /* padding: 5px; */
+  /* border: 1px solid green; */
+  min-width: 0;
+  list-style: none;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 901px) {
+  .defaultView {
+    padding: 0 10px;
+  }
+}
