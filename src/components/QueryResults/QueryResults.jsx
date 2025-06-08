@@ -16,7 +16,6 @@ export default function QueryResults({ handleAddToCart }) {
     selectedGenres,
     setSelectedGenres,
     hasSelectedGenres,
-    setIsQuery,
     resetFilters,
   } = useFilters()
 
@@ -45,14 +44,6 @@ export default function QueryResults({ handleAddToCart }) {
     }
   }, [hasMore, loadingMore, loadMore])
 
-  //search state tracking
-  // useEffect(() => {
-  //   const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
-  //   if (searchTerm || hasSelectedGenres) {
-  //     setIsQuery(true)
-  //   }
-  // }, [searchTerm, selectedGenres])
-
   function handleRemoveGenre(slug) {
     setSelectedGenres((prev) => ({
       ...prev,
@@ -64,7 +55,6 @@ export default function QueryResults({ handleAddToCart }) {
     e.preventDefault()
     const term = e.target.elements["search"].value.trim()
     setSearchTerm(term)
-    // setIsQuery(true)
   }
 
   function handleReset(e) {

@@ -13,19 +13,10 @@ export default function Filters({ drawerVariant = false }) {
     setSearchTerm,
     selectedGenres,
     setSelectedGenres,
-    setIsQuery,
     resetFilters,
   } = useFilters()
 
   const navigate = useNavigate()
-
-  //search state tracking
-  // useEffect(() => {
-  //   const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
-  //   if (searchTerm || hasSelectedGenres) {
-  //     setIsQuery(true)
-  //   }
-  // }, [searchTerm, selectedGenres])
 
   function handleGenreChange(e) {
     const { name, checked } = e.target

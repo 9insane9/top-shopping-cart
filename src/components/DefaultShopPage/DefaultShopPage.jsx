@@ -1,8 +1,8 @@
+import { useProducts } from "../context/ProductProvider"
 import ShopItem from "../ShopItem/ShopItem"
 import ShopCarousel from "../ShopCarousel/ShopCarousel"
-import { useProducts } from "../context/ProductProvider"
-import classes from "./DefaultShopPage.module.css"
 import ShimmerBox from "../../utils/ShimmerBox"
+import classes from "./DefaultShopPage.module.css"
 
 export default function DefaultShopPage({ handleAddToCart }) {
   const { carouselData, loadingCarouselData } = useProducts()

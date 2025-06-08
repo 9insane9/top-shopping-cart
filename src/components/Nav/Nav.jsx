@@ -32,7 +32,6 @@ export default function Nav({ onDrawerToggle, setDrawerContent }) {
     e.preventDefault()
     const term = e.target.elements["search"].value.trim()
     setSearchTerm(term)
-    // setIsQuery(true)
     navigate("/shop")
   }
 
