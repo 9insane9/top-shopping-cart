@@ -1,14 +1,14 @@
 # Shopping Cart for TheOdinProject
 
-# Mock Video Game Store
+## Mock Video Game Store
 
 A modern, minimalist video game store demo using the RAWG API
 
-## Live Demo
+### Live Demo
 
 [https://vidyagemz.netlify.app/](https://vidyagemz.netlify.app/)
 
-## Features
+### Features
 
 - Responsive design (supports screens down to 400px)
 - Carousels to display game categories
@@ -19,7 +19,7 @@ A modern, minimalist video game store demo using the RAWG API
 - Product rating info on hover
 - Infinite scrolling
 
-## Technologies
+### Technologies
 
 - React
 - React Router DOM
