@@ -4,6 +4,10 @@
 
 A modern, minimalist video game store demo using the RAWG API
 
+## Live Demo
+
+[https://vidyagemz.netlify.app/](https://vidyagemz.netlify.app/)
+
 ## Features
 
 - Responsive design (supports screens down to 400px)
