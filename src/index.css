@@ -1,24 +1,29 @@
 :root {
-  /* Background Colors */
-  --primary-bg: #1e1f26; /* Deep charcoal */
-  --nav-bg: #2c2e3a; /* Slightly lighter charcoal */
-  --nav-hover-bg: #9baaff; /* Slightly lighter charcoal */
-  --item-bg: #424b69; /* Dark slate-blue for item cards */
+  /* general background colors */
+  --primary-bg: #1e1f26; /* deep charcoal */
+  --nav-bg: #2c2e3a; /* slightly lighter charcoal */
+  --nav-hover-bg: #9baaff; /* slightly lighter charcoal */
+  --item-bg: #424b69; /* dark slate-blue for item cards */
 
-  --filter-label-bg: #3a506b; /* Muted steel blue */
-  --genre-selected-bg: #1b9aaa; /* Bright cyan-teal */
+  /* filter-specific colors */
+  --filter-label-bg: #3a506b; /* muted steel blue */
+  --genre-selected-bg: #1b9aaa; /* bright cyan-teal */
 
-  --remove-btn-bg: #cf0f47; /* Crimson red */
-  --add-to-cart-btn-bg: #3fc1c9; /* Fresh turquoise */
+  /* text colors */
+  --primary-text: #ffffff; /* pure white */
+  --secondary-text: #e0e0e0; /* light gray */
+  --tertiary-text: #a0a0a0; /* medium gray */
 
-  /* Text Colors */
-  --primary-text: #ffffff; /* Pure white */
-  --secondary-text: #e0e0e0; /* Light gray */
-  --tertiary-text: #a0a0a0; /* Medium gray */
+  /* button colors */
+  --store-button-bg: #424b69; /* coral red */
+  --store-button-hover-bg: #9baaff; /* coral red */
+  --store-button-text: #b8bffa; /* matches primary-bg for contrast */
+  --remove-btn-bg: #cf0f47; /* crimson red */
+  --add-to-cart-btn-bg: #3fc1c9; /* fresh turquoise */
 
-  --store-button-bg: #424b69; /* Coral red */
-  --store-button-hover-bg: #9baaff; /* Coral red */
-  --store-button-text: #b8bffa; /* Matches primary-bg for contrast */
+  /* width control */
+  --max-app-width: 1280px;
+  --min-app-width: 400px;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -26,8 +31,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  /* background-color: var(--primary-bg); */
-  background-color: #000000; /* outside app area */
+  background-color: var(--primary-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,17 +39,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  display: flex;
+  min-width: var(--min-app-width);
+  min-height: 100vh;
+}
+
+/* toast stuff */
+
+.Toastify__toast {
+  background-color: var(--primary-bg);
+  color: var(--store-button-text);
+  font-size: 1rem;
+  border: 1px solid var(--item-bg);
+  border-radius: 8px;
+}
+
+/* global overrides */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -67,14 +82,4 @@ input::placeholder {
 
 input:focus::placeholder {
   color: #ccc;
-}
-
-/* toast stuff */
-
-.Toastify__toast {
-  background-color: var(--primary-bg);
-  color: var(--store-button-text);
-  font-size: 1rem;
-  border: 1px solid var(--item-bg);
-  border-radius: 8px;
 }

@@ -1,13 +1,11 @@
 .cart {
-  /* border: 2px solid green; */
-  /* color: blue; */
   color: var(--color-test);
   text-align: left;
   margin: 0 5px;
-  /* overflow: scroll; */
 }
 
 .drawerCart {
+  max-height: 100vh;
   overflow-y: scroll;
   padding: 0 5px;
 }
@@ -17,7 +15,6 @@
 }
 
 .cartBtns {
-  /* border: 1px solid red; */
   padding: 10px 0;
   gap: 5px;
 }
@@ -39,7 +36,6 @@
 
 .checkoutBtn {
   font-weight: bold;
-  /* different color */
 }
 
 .total {
@@ -83,13 +79,6 @@
   justify-content: flex-end;
 }
 
-@media screen and (max-width: 900px) {
-  .fullSizeCart {
-    padding: 10px 15px;
-    margin: 0;
-  }
-}
-
 .cartBtns button {
   color: var(--store-button-text);
   background: var(--store-button-bg);
@@ -100,4 +89,11 @@
 .cartBtns button:hover {
   color: var(--primary-text);
   background: var(--store-button-hover-bg);
+}
+
+@media screen and (max-width: 900px) {
+  .fullSizeCart {
+    padding: 10px 15px;
+    margin: 0;
+  }
 }

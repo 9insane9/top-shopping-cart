@@ -1,6 +1,7 @@
 .navBar {
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
   background-color: var(--nav-bg);
   color: var(--primary-text);
   justify-content: space-between;
@@ -9,6 +10,27 @@
   position: sticky;
   top: 0;
   z-index: 30;
+  max-width: var(--max-app-width);
+  min-width: var(--min-app-width);
+}
+
+/* to make nav full width */
+.navBarContainer {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: var(--nav-bg);
+  width: 100vw;
+  min-width: var(--min-app-width);
+  display: flex;
+  justify-content: center;
+}
+
+/* hacky margin fix for nav bar */
+@media screen and (min-width: 401px) {
+  .navBarContainer {
+    margin-left: calc(-50vw + 50%);
+  }
 }
 
 .links {
@@ -19,7 +41,6 @@
 }
 
 .links li {
-  /* border: 1px solid blue; */
   padding: 0;
   font-size: 1.1rem;
   display: flex;
@@ -39,7 +60,6 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  /* border: 1px solid cyan; */
 }
 
 .btn {
@@ -48,7 +68,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* border: 1px solid greenyellow; */
   height: 40px;
 }
 
@@ -80,7 +99,6 @@
 
 .searchContainer {
   display: none;
-  /* display: flex; */
   flex-direction: row;
   flex-wrap: nowrap;
   flex-grow: 1;
@@ -89,7 +107,6 @@
 
 .searchContainer input {
   width: 100%;
-  /* margin-left: 10px; */
   outline: none;
   border: none;
   color: var(--primary-text);
@@ -113,7 +130,3 @@
     width: 300px;
   }
 }
-
-/* .drawer {
-  background-color: var(--primary-bg);
-} */

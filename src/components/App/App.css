@@ -1,13 +1,11 @@
 #root {
   display: flex;
+  position: relative;
   flex-grow: 1;
   flex-direction: column;
-  max-width: 1280px;
+  max-width: var(--max-app-width);
   min-width: 0;
   margin: 0 auto;
   text-align: center;
-  /* border: 1px solid red; */
   background-color: var(--primary-bg);
-  /* position: relative; */
-  /* padding: 0 20px; */
 }
