@@ -31,7 +31,7 @@ export function processGame(game) {
     !game.released ||
     !game.genres?.length
   ) {
-    console.log("invalid product found")
+    // console.log("invalid product found")
     return null
   }
 
@@ -51,6 +51,5 @@ export function processGame(game) {
     genres: game.genres?.map((g) => g.name),
   }
 
-  // console.log(processedGame)
   return processedGame
 }

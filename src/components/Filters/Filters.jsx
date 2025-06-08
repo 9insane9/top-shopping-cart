@@ -20,17 +20,17 @@ export default function Filters({ drawerVariant = false }) {
   const navigate = useNavigate()
 
   //search state tracking
-  useEffect(() => {
-    const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
-    if (searchTerm || hasSelectedGenres) {
-      setIsQuery(true)
-    }
-  }, [searchTerm, selectedGenres])
+  // useEffect(() => {
+  //   const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
+  //   if (searchTerm || hasSelectedGenres) {
+  //     setIsQuery(true)
+  //   }
+  // }, [searchTerm, selectedGenres])
 
   function handleGenreChange(e) {
     const { name, checked } = e.target
     setSelectedGenres((prev) => ({ ...prev, [name]: checked }))
-    navigate("/shop") // idk if this is the place for it
+    navigate("/shop")
   }
 
   function handleSubmit(e) {

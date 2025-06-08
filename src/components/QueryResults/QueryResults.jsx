@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react"
-import { ProductProvider, useProducts } from "../context/ProductProvider"
+import { useProducts } from "../context/ProductProvider"
 import { useFilters } from "../context/FilterProvider"
 import { PropagateLoader } from "react-spinners"
 import { GENRES } from "../../utils/genres"
@@ -46,12 +46,12 @@ export default function QueryResults({ handleAddToCart }) {
   }, [hasMore, loadingMore, loadMore])
 
   //search state tracking
-  useEffect(() => {
-    const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
-    if (searchTerm || hasSelectedGenres) {
-      setIsQuery(true)
-    }
-  }, [searchTerm, selectedGenres])
+  // useEffect(() => {
+  //   const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
+  //   if (searchTerm || hasSelectedGenres) {
+  //     setIsQuery(true)
+  //   }
+  // }, [searchTerm, selectedGenres])
 
   function handleRemoveGenre(slug) {
     setSelectedGenres((prev) => ({
@@ -64,7 +64,7 @@ export default function QueryResults({ handleAddToCart }) {
     e.preventDefault()
     const term = e.target.elements["search"].value.trim()
     setSearchTerm(term)
-    setIsQuery(true)
+    // setIsQuery(true)
   }
 
   function handleReset(e) {
@@ -77,10 +77,7 @@ export default function QueryResults({ handleAddToCart }) {
   }
 
   const nothingFound = isSearchCriteria && !loading && products.length === 0
-
   const activeGenres = GENRES.filter((genre) => selectedGenres[genre.slug])
-
-  // console.log(products[0])
 
   return (
     <div className={classes.queryResults}>
@@ -111,7 +108,7 @@ export default function QueryResults({ handleAddToCart }) {
           ) : null}
 
           <div className={classes.searchMenu}>
-            {/* spacer div to keep search in the middle and grid buttons on the right */}
+            {/* spacer div to keep search in the middle and grid button on the right */}
             <div></div>
             <form className={classes.searchContainer} onSubmit={handleSubmit}>
               <button type="button" onClick={handleReset}>
@@ -189,7 +186,7 @@ export default function QueryResults({ handleAddToCart }) {
             </div>
           )}
 
-          {/* invisible div to detect scroll bottom */}
+          {/* invisible div to detect scroll */}
           {!loading && isSearchCriteria && (
             <div ref={sentinelRef} style={{ height: "1px" }} />
           )}

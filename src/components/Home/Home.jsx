@@ -4,11 +4,10 @@ import { useFilters } from "../context/FilterProvider"
 
 export default function Home() {
   const navigate = useNavigate()
-  const { resetFilters, setIsQuery } = useFilters()
+  const { resetFilterContext } = useFilters()
 
   const resetAndNavigate = () => {
-    resetFilters()
-    setIsQuery(false)
+    resetFilterContext()
     navigate("/shop")
   }
 

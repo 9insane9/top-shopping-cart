@@ -7,7 +7,7 @@ import "./ShopCarousel.css"
 
 export default function ShopCarousel({ genreName = "", children }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
-  const { setSelectedGenres, resetFilters, setIsQuery } = useFilters()
+  const { setSelectedGenres, resetFilters } = useFilters()
 
   const slides = Children.toArray(children)
 
@@ -21,14 +21,13 @@ export default function ShopCarousel({ genreName = "", children }) {
   }, [emblaApi])
 
   const handleSeeAll = () => {
-    const matched = GENRES.find(
+    const matchedGenre = GENRES.find(
       (g) => g.name.toLowerCase() === genreName.toLowerCase()
     )
-    setIsQuery(true)
     resetFilters()
     setSelectedGenres((prev) => ({
       ...prev,
-      [matched.slug]: true,
+      [matchedGenre.slug]: true,
     }))
   }
 
@@ -38,7 +37,6 @@ export default function ShopCarousel({ genreName = "", children }) {
         <h1>{genreName}</h1>
         <button onClick={handleSeeAll}>See all</button>
       </div>
-      <div className="embla__controls"></div>
       <div className="controlsWrapper">
         <button className="embla__prev" onClick={scrollPrev}>
           {icons.arrowLeft({ className: `arrow arrowLeft` })}

@@ -34,6 +34,7 @@ function App() {
         direction="right"
         size={320}
         overlayOpacity="0.7"
+        //--primary-bg
         style={{ backgroundColor: "#1e1f26" }}
       >
         {(() => {
@@ -42,8 +43,8 @@ function App() {
               return <Filters drawerVariant />
             case "cart":
               return <Cart variant="drawer" onClose={toggleShowDrawer} />
-            case "menu":
-              return <p>here goes MENU component</p>
+            // case "menu":
+            //   return <p>here goes MENU component</p>
             default:
               return <Cart variant="drawer" onClose={toggleShowDrawer} />
           }

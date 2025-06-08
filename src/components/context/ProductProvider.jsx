@@ -26,7 +26,7 @@ export function ProductProvider({ children }) {
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
-  // 🔁 Load carousel data on mount
+  // load carousel data on mount
   useEffect(() => {
     const loadCarousels = async () => {
       setLoadingCarouselData(true)
@@ -50,7 +50,7 @@ export function ProductProvider({ children }) {
     loadCarousels()
   }, [])
 
-  // 🔁 Load search products
+  // load search products
   useEffect(() => {
     if (!searchTerm && !genre) return
 
@@ -62,10 +62,8 @@ export function ProductProvider({ children }) {
           genre,
           page: 1,
         })
-        // console.log(results)
         const processed = results.map(processGame).filter(Boolean)
         addToCache(processed)
-        // console.log(processed)
         setPages([processed])
         setNextUrl(next)
         setError(null)

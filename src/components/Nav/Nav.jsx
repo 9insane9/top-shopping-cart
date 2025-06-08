@@ -5,23 +5,24 @@ import icons from "../../utils/icons"
 import classes from "./Nav.module.css"
 
 export default function Nav({ onDrawerToggle, setDrawerContent }) {
-  const { searchTerm, setSearchTerm, setIsQuery, resetFilters } = useFilters()
+  const { searchTerm, setSearchTerm, resetFilterContext } = useFilters()
   const { cartTotalQty } = useCart()
   const navigate = useNavigate()
 
   const handleShopClick = () => {
-    resetFilters()
-    setIsQuery(false)
+    resetFilterContext()
   }
 
   const handleSearchClick = () => {
     setDrawerContent("search")
     onDrawerToggle()
   }
+
   const handleCartClick = () => {
     setDrawerContent("cart")
     onDrawerToggle()
   }
+
   // const handleMenuClick = () => {
   //   setDrawerContent("menu")
   //   onDrawerToggle()
@@ -31,7 +32,7 @@ export default function Nav({ onDrawerToggle, setDrawerContent }) {
     e.preventDefault()
     const term = e.target.elements["search"].value.trim()
     setSearchTerm(term)
-    setIsQuery(true)
+    // setIsQuery(true)
     navigate("/shop")
   }
 
@@ -65,7 +66,6 @@ export default function Nav({ onDrawerToggle, setDrawerContent }) {
           className={`${classes.btn} ${classes.searchBtn}`}
           onClick={handleSearchClick}
         >
-          {/* <img src="/search.svg" alt="search" /> */}
           {icons.search({ className: `${classes.search}` })}
         </button>
         <button

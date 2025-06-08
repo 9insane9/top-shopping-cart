@@ -8,6 +8,7 @@ export default function OrderSuccess() {
   const [isProccesing, setIsProcessing] = useState(true)
   const navigate = useNavigate()
 
+  //just time outs
   useEffect(() => {
     const processingTimeout = setTimeout(() => {
       setIsProcessing(false)

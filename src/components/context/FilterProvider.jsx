@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 import { GENRES } from "../../utils/genres"
 
 const FilterContext = createContext()
@@ -15,9 +15,22 @@ export function FilterProvider({ children }) {
 
   const hasSelectedGenres = Object.values(selectedGenres).some(Boolean)
 
+  //search mode latch
+  useEffect(() => {
+    const shouldBeTrue = Boolean(searchTerm) || hasSelectedGenres
+    if (shouldBeTrue && !isQuery) {
+      setIsQuery(true)
+    }
+  }, [searchTerm, selectedGenres, hasSelectedGenres, isQuery])
+
   function resetFilters() {
     setSearchTerm("")
     setSelectedGenres(initialGenres)
+  }
+
+  function resetFilterContext() {
+    resetFilters()
+    setIsQuery(false)
   }
 
   return (
@@ -29,8 +42,8 @@ export function FilterProvider({ children }) {
         setSelectedGenres,
         hasSelectedGenres,
         isQuery,
-        setIsQuery,
         resetFilters,
+        resetFilterContext,
       }}
     >
       {children}
