@@ -2,16 +2,19 @@ import { MoonLoader, ClipLoader } from "react-spinners"
 import { ConfettiExplosion } from "react-confetti-explosion"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useFilters } from "../context/FilterProvider"
 import classes from "./OrderSuccess.module.css"
 
 export default function OrderSuccess() {
   const [isProccesing, setIsProcessing] = useState(true)
+  const { resetFilterContext } = useFilters()
   const navigate = useNavigate()
 
   //just time outs
   useEffect(() => {
     const processingTimeout = setTimeout(() => {
       setIsProcessing(false)
+      resetFilterContext()
     }, 3000)
 
     const redirectTimeout = setTimeout(() => {
