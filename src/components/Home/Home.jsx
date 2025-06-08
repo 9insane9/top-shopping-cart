@@ -1,6 +1,6 @@
-import classes from "./Home.module.css"
 import { useNavigate } from "react-router-dom"
 import { useFilters } from "../context/FilterProvider"
+import classes from "./Home.module.css"
 
 export default function Home() {
   const navigate = useNavigate()

@@ -22,6 +22,8 @@ export default function QueryResults({ handleAddToCart }) {
   const [isListView, setIsListView] = useState(true)
 
   const isSearchCriteria = searchTerm || hasSelectedGenres
+
+  //    \\ infinite scroll //
   const sentinelRef = useRef(null)
 
   useEffect(() => {
@@ -43,6 +45,7 @@ export default function QueryResults({ handleAddToCart }) {
       if (sentinel) observer.unobserve(sentinel)
     }
   }, [hasMore, loadingMore, loadMore])
+  //    // infinite scroll \\
 
   function handleRemoveGenre(slug) {
     setSelectedGenres((prev) => ({
@@ -52,8 +55,8 @@ export default function QueryResults({ handleAddToCart }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
     const term = e.target.elements["search"].value.trim()
+    e.preventDefault()
     setSearchTerm(term)
   }
 
@@ -134,7 +137,7 @@ export default function QueryResults({ handleAddToCart }) {
             <div className={classes.noCriteria}>
               Perform a search or select a genre to see products.
             </div>
-          ) : loading /* spinner */ ? (
+          ) : loading ? (
             <div className={classes.loadSpinner}>
               <PropagateLoader color="#a0a0a0" />
             </div>
@@ -162,7 +165,7 @@ export default function QueryResults({ handleAddToCart }) {
           )}
         </div>
         <div className={classes.loadingSection}>
-          {/* fallback if auto-load fails */}
+          {/* fallback if auto-load fails, visually buggy, disabled */}
           {/* {!loading && isSearchCriteria && hasMore && !loadingMore && (
             <button className={classes.loadMoreBtn} onClick={loadMore}>
               Load more

@@ -9,8 +9,7 @@ import classes from "./Shop.module.css"
 export default function Shop() {
   const { addToCart } = useCart()
   const { productCache, error } = useProducts()
-  // const { loading } = useProducts()
-  const { searchTerm, hasSelectedGenres, isQuery } = useFilters()
+  const { isQuery } = useFilters()
 
   function handleAddToCart(id) {
     const item = productCache[id]

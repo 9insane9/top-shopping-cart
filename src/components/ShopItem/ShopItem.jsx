@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { formatDate } from "../../utils/formatDate"
+import { getRatingData } from "../../utils/getRatingData"
 import icons from "../../utils/icons"
 import classes from "./ShopItem.module.css"
 
@@ -16,55 +17,13 @@ export default function ShopItem({
 }) {
   const [visible, setVisible] = useState(false)
 
+  // small animation delay
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 10) // small delay to trigger animation
+    const timer = setTimeout(() => setVisible(true), 10)
     return () => clearTimeout(timer)
   }, [])
 
-  function getRatingData(rating, ratingCount) {
-    const clampedRating = Math.max(0.01, Math.min(rating, 5.0))
-    const percent = Math.round((clampedRating / 5) * 100)
-
-    let title = ""
-    let status = ""
-
-    if (percent >= 70) {
-      title =
-        percent >= 95
-          ? "Overwhelmingly Positive"
-          : percent >= 80
-          ? "Very Positive"
-          : "Mostly Positive"
-      status = "positive"
-    } else if (percent >= 40) {
-      title = "Mixed"
-      status = "mixed"
-    } else {
-      title = percent >= 20 ? "Mostly Negative" : "Very Negative"
-      status = "negative"
-    }
-
-    const string = `${percent}% of the ${ratingCount} reviews for this game are positive`
-
-    function getIcon(icons, baseClassName) {
-      const combinedClassName = `${baseClassName} ${classes[status]}`
-
-      switch (status) {
-        case "positive":
-          return icons.thumbUp({ className: combinedClassName })
-        case "mixed":
-          return icons.mixed({ className: combinedClassName })
-        case "negative":
-          return icons.thumbDown({ className: combinedClassName })
-        default:
-          return null
-      }
-    }
-
-    return { title, string, status, getIcon }
-  }
-
-  const ratingData = getRatingData(rating, ratingCount)
+  const ratingData = getRatingData(rating, ratingCount, classes)
 
   const gridItem = (
     <li className={`${classes.item} ${visible ? classes.visible : ""}`}>
@@ -92,7 +51,7 @@ export default function ShopItem({
           <div className={classes.releaseRating}>
             <p className={classes.release}>{formatDate(released)}</p>
             <div className={classes.tooltip}>
-              {ratingData.getIcon(icons, classes.ratingIcon)}
+              {ratingData.getIcon(classes.ratingIcon)}
               <div className={classes.tooltipText}>
                 <p className={classes.ratingTitle}>{ratingData.title}</p>
                 <p className={classes.ratingString}>{ratingData.string}</p>
@@ -106,7 +65,6 @@ export default function ShopItem({
             className={classes.buyButtonListItem}
             onClick={() => onAdd(id)}
           >
-            {/* <img src="./cartAdd.svg" alt="add to cart" /> */}
             {icons.cartPlus({ className: `${classes.cartPlus}` })}
           </button>
         </div>

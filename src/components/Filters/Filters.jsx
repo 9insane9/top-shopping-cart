@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { GENRES } from "../../utils/genres"
 import { useDrawer } from "../context/DrawerProvider"
 import { useFilters } from "../context/FilterProvider"
@@ -21,7 +20,7 @@ export default function Filters({ drawerVariant = false }) {
   function handleGenreChange(e) {
     const { name, checked } = e.target
     setSelectedGenres((prev) => ({ ...prev, [name]: checked }))
-    navigate("/shop")
+    navigate("/shop") /* navigate to results page */
   }
 
   function handleSubmit(e) {
